@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager GM;
+
+    public bool isDraw;
+
+    private void OnEnable()
     {
-        
+        if (GameManager.GM == null)
+            GameManager.GM = this; 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
