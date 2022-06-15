@@ -292,8 +292,8 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  linePointsMinDistance: 0.2
-  lineWidth: 0.5
+  linePointsMinDistance: 0.12
+  lineWidth: 0.1
   pencil: {fileID: 8042284864767486079, guid: 6fcbbd9451c97554fb6ef56fe594892d, type: 3}
 --- !u!1 &705507993
 GameObject:

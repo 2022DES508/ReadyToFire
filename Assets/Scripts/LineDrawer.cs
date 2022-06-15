@@ -74,8 +74,7 @@ public class LineDrawer : MonoBehaviour
         {
             if (hit.collider.name == "Plane")
             {
-                print("DRAW!!!");
-                drawPoint = hit.point;
+                drawPoint = new Vector3(hit.point.x, hit.point.y + 0.2f, hit.point.z); 
                 isChangePoint = true; 
             }
         }
