@@ -8,10 +8,22 @@ public class GameManager : MonoBehaviour
 
     public bool isDraw;
 
+    public PoliceAttributes currentPA;
+    public GameObject currentLine; 
+
     private void OnEnable()
     {
         if (GameManager.GM == null)
             GameManager.GM = this; 
+    }
+
+    private void Update()
+    {
+        if (currentPA && currentPA.endMove)
+        {
+            currentPA.endMove = false;
+            Destroy(currentLine); 
+        }
     }
 
 }

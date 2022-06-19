@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 5842506490867187969}
   - component: {fileID: 814738749451505364}
   - component: {fileID: 6413424233722777939}
+  - component: {fileID: 7736995032970320253}
   m_Layer: 0
   m_Name: Police
   m_TagString: Untagged
@@ -241,13 +242,15 @@ MonoBehaviour:
   healthyNow: 0
   armourMax: 0
   armourNow: 0
-  moveSpeed: 0
+  moveSpeed: 25
   steeringSpeed: 0
   reactionAimingSpeed: 0
   magazineChangeSpeed: 0
   weaponChangeSpeed: 0
   meleeDamage: 0
   fireRate: 0
+  path: []
+  startMove: 0
 --- !u!65 &6413424233722777939
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -261,3 +264,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7736995032970320253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787400853192304102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002092acba4ddbb46800757d42e28a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

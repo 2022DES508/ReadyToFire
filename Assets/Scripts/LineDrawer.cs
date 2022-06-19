@@ -53,12 +53,15 @@ public class LineDrawer : MonoBehaviour
     {
         if (currentLine != null)
         {
+            GameManager.GM.currentPA.SetPath(currentLine.points); 
+
             if (currentLine.pointsCount < 2)
             {
                 Destroy(currentLine.gameObject); 
             }
             else
             {
+                GameManager.GM.currentLine = currentLine.gameObject; 
                 currentLine = null; 
             }
         }
