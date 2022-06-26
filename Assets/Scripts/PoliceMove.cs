@@ -30,7 +30,7 @@ public class PoliceMove : MonoBehaviour
             if (posIndex > 0 && posIndex < PA.path.ToArray().Length)
             {
                 this.gameObject.transform.position = new Vector3(PA.path[posIndex].x,
-                    PA.path[posIndex].y, PA.path[posIndex].z);
+                    (float)(PA.path[posIndex].y + 0.5) , PA.path[posIndex].z); 
                 posIndex += 1;
             }
             else
