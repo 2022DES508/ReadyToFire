@@ -265,8 +265,8 @@ MonoBehaviour:
   linePrefab: {fileID: 4695134765378797284, guid: 23569f7721e06b44fa4b388c7f2bc688, type: 3}
   lineColor:
     serializedVersion: 2
-    key0: {r: 0.7169812, g: 0.35443217, b: 0.66019756, a: 1}
-    key1: {r: 0.6792453, g: 0.2781061, b: 0.2781061, a: 1}
+    key0: {r: 0, g: 0.8863139, b: 1, a: 1}
+    key1: {r: 0.51748276, g: 0, b: 1, a: 1}
     key2: {r: 0.6792453, g: 0.2781061, b: 0.2781061, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
