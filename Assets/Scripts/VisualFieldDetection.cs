@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VisualFieldDetection : MonoBehaviour
 {
-    private List<Ray> rays; 
+    public List<Ray> rays; 
     private float fieldAngle;
     private float addHighOfAngle; 
     private Vector3 origin;

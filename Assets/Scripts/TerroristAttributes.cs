@@ -17,18 +17,26 @@ public class TerroristAttributes : MonoBehaviour
     public float fireRate;
     public float shootingAccuracy;
 
+    public bool isShow;
+
+    private void Start()
+    {
+        isShow = false; 
+    }
     private void Update()
     {
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
         MeshRenderer[] allRenderers = transform.GetComponentsInChildren<MeshRenderer>();
-        if (Vector3.Distance(firstEnemy.transform.position, transform.position) > 10)
+        // if (Vector3.Distance(firstEnemy.transform.position, transform.position) > 10)
+        if (!isShow) 
         {
             HideRenderers(allRenderers); 
         }
         else
         {
-            ShowRenderers(allRenderers); 
+            ShowRenderers(allRenderers);
+            isShow = false; 
         }
     }
 
