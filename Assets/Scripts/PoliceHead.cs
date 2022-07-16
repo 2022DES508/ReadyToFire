@@ -15,7 +15,7 @@ public class PoliceHead : MonoBehaviour
     {
         TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
         TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
-        // transform.LookAt(firstEnemy.gameObject.transform);  
+        transform.LookAt(firstEnemy.gameObject.transform);  
         DetectEnemy(); 
     }
 

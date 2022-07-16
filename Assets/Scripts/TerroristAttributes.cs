@@ -31,11 +31,13 @@ public class TerroristAttributes : MonoBehaviour
         // if (Vector3.Distance(firstEnemy.transform.position, transform.position) > 10)
         if (!isShow) 
         {
-            HideRenderers(allRenderers); 
+            HideRenderers(allRenderers);
+            firstEnemy.isFire = false; 
         }
         else
         {
             ShowRenderers(allRenderers);
+            firstEnemy.isFire = true; 
             isShow = false; 
         }
     }
