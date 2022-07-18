@@ -18,6 +18,8 @@ public class TerroristAttributes : MonoBehaviour
     public float shootingAccuracy;
 
     public bool isShow;
+    [HideInInspector]
+    public bool isFire; 
 
     private void Start()
     {

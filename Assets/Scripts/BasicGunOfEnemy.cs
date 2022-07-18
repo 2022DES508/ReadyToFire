@@ -74,6 +74,9 @@ public class BasicGunOfEnemy : MonoBehaviour
 
     void Fire()
     {
+        if (!transform.parent.gameObject.transform.parent.GetComponentInParent<TerroristAttributes>().isFire) 
+            return; 
+
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<BulletOfEnemy>().SetSpeed(direction); 
     }
