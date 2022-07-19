@@ -25,7 +25,10 @@ public class PoliceAttributes : MonoBehaviour
     public List<Vector3> path;
     [HideInInspector]
     public bool startMove;
-    public bool endMove; 
+    public bool endMove;
+
+    [HideInInspector]
+    public bool isFire; 
 
     private void OnMouseEnter()
     {

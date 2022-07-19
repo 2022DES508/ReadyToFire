@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class TerroristHead : MonoBehaviour
 {
+    private VisualFieldDetection vfd;
+
+    private void Start()
+    {
+        vfd = GetComponent<VisualFieldDetection>(); 
+    }
+
     private void Update()
     {
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
-        transform.LookAt(firstEnemy.gameObject.transform);  
+        transform.LookAt(firstEnemy.gameObject.transform);
+        DetectEnemy(); 
     }
 
     PoliceAttributes FindFirstEnemy(PoliceAttributes[] enemies, Transform policePos)
@@ -27,5 +35,20 @@ public class TerroristHead : MonoBehaviour
         }
 
         return finalEnemy;
+    }
+
+    void DetectEnemy()
+    {
+        GetComponentInParent<TerroristAttributes>().isFire = false; 
+        foreach (var ray in vfd.rays)
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            {
+                if (hit.collider.gameObject.GetComponent<PoliceAttributes>())
+                {
+                    GetComponentInParent<TerroristAttributes>().isFire = true; 
+                }
+            }
+        }
     }
 }

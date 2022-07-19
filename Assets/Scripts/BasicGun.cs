@@ -7,7 +7,7 @@ public class BasicGun : MonoBehaviour
     public float interval;
 
     public GameObject bulletPrefab;
-    // public GameObject shellPrefab;
+    // public GameObject shellPrefab; 
 
     private Transform muzzlePos;
     // private Transform shellPos;
@@ -51,7 +51,7 @@ public class BasicGun : MonoBehaviour
         TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);  
         direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z) 
             - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
-        Debug.Log("Aiming direction: " + direction); 
+        // Debug.Log("Aiming direction: " + direction); 
     }
 
     TerroristAttributes FindFirstEnemy(TerroristAttributes[] enemies, Transform policePos)
@@ -74,6 +74,8 @@ public class BasicGun : MonoBehaviour
 
     void Fire()
     {
+        if (!transform.parent.gameObject.transform.parent.GetComponent<PoliceAttributes>().isFire) return;  
+
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().SetSpeed(direction); 
     }

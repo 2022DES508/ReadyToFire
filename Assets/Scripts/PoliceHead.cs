@@ -5,18 +5,24 @@ using UnityEngine;
 public class PoliceHead : MonoBehaviour
 {
     private VisualFieldDetection vfd;
+    private LineRenderer lr; 
 
     private void Start()
     {
         vfd = GetComponent<VisualFieldDetection>();
+        lr = GetComponent<LineRenderer>(); 
     }
 
     private void Update()
     {
         TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
         TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
-        // transform.LookAt(firstEnemy.gameObject.transform);  
-        DetectEnemy(); 
+        transform.LookAt(firstEnemy.gameObject.transform);  
+        DetectEnemy();
+        if (GetComponentInParent<PoliceAttributes>().isFire)
+            lr.enabled = false;
+        else
+            lr.enabled = true; 
     }
 
     TerroristAttributes FindFirstEnemy(TerroristAttributes[] enemies, Transform policePos)
