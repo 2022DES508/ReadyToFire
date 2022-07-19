@@ -40,12 +40,12 @@ public class TerroristAttributes : MonoBehaviour
         if (!isShow) 
         {
             HideRenderers(allRenderers);
-            firstEnemy.isFire = false; 
+            // firstEnemy.isFire = false; 
         }
         else
         {
             ShowRenderers(allRenderers);
-            firstEnemy.isFire = true; 
+            // firstEnemy.isFire = true; 
             isShow = false; 
         }
     }

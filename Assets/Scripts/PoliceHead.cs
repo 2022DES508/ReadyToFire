@@ -51,6 +51,7 @@ public class PoliceHead : MonoBehaviour
 
     bool DetectEnemy()
     {
+        GetComponentInParent<PoliceAttributes>().isFire = false; 
         bool isture = false; 
         foreach (var ray in vfd.rays)
         {
@@ -58,6 +59,7 @@ public class PoliceHead : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<TerroristAttributes>())
                 {
+                    GetComponentInParent<PoliceAttributes>().isFire = true; 
                     hit.collider.gameObject.GetComponent<TerroristAttributes>().isShow = true;
                     isture = true; 
                 }

@@ -82,7 +82,7 @@ public class BasicGun : MonoBehaviour
 
     void Fire()
     {
-        if (!transform.parent.gameObject.transform.parent.GetComponent<PoliceAttributes>().isFire) return;  
+        if (!transform.parent.gameObject.transform.parent.GetComponentInParent<PoliceAttributes>().isFire) return;  
 
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().SetSpeed(direction); 
