@@ -51,7 +51,7 @@ public class BasicGunOfEnemy : MonoBehaviour
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);  
         direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z) 
             - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
-        Debug.Log("Aiming direction: " + direction); 
+        // Debug.Log("Aiming direction: " + direction); 
     }
 
     PoliceAttributes FindFirstEnemy(PoliceAttributes[] enemies, Transform policePos)

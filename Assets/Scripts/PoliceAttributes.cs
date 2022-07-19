@@ -28,7 +28,10 @@ public class PoliceAttributes : MonoBehaviour
     public bool endMove;
 
     [HideInInspector]
-    public bool isFire; 
+    public bool isFire;
+
+    [HideInInspector]
+    public bool isControl; 
 
     private void OnMouseEnter()
     {

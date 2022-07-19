@@ -21,6 +21,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
-            Destroy(gameObject); 
+        {
+            other.GetComponent<TerroristAttributes>().healthyNow -= 1; 
+            Destroy(gameObject);
+        }
     }
 }
