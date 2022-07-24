@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4730c35915f164444961b9d5aec02f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthyMax: 0
+  healthyMax: 5
   healthyNow: 0
   moveSpeed: 0
   steeringSpeed: 0

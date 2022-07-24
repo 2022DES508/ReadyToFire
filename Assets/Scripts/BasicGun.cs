@@ -48,14 +48,22 @@ public class BasicGun : MonoBehaviour
     void Aiming()
     {
         TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
-        TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);  
-        direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z) 
-            - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
-        // Debug.Log("Aiming direction: " + direction); 
+        TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
+        if (firstEnemy)
+        {
+            direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z)
+                - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+            // Debug.Log("Aiming direction: " + direction); 
+        }
+        else
+        {
+            transform.parent.gameObject.transform.parent.GetComponent<PoliceAttributes>().isFire = false; 
+        }
     }
 
     TerroristAttributes FindFirstEnemy(TerroristAttributes[] enemies, Transform policePos)
     {
+        if (enemies.Length <= 0) return null; 
         float minDistance = Vector3.Distance(enemies[0].transform.position, policePos.position);
         TerroristAttributes finalEnemy = enemies[0];
 
@@ -74,7 +82,7 @@ public class BasicGun : MonoBehaviour
 
     void Fire()
     {
-        if (!transform.parent.gameObject.transform.parent.GetComponent<PoliceAttributes>().isFire) return;  
+        if (!transform.parent.gameObject.transform.parent.GetComponentInParent<PoliceAttributes>().isFire) return;  
 
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().SetSpeed(direction); 

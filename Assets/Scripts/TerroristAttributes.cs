@@ -23,10 +23,16 @@ public class TerroristAttributes : MonoBehaviour
 
     private void Start()
     {
-        isShow = false; 
+        isShow = false;
+        healthyNow = healthyMax; 
     }
     private void Update()
     {
+        if (healthyNow <= 0)
+        {
+            Destroy(gameObject); 
+        }
+
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
         MeshRenderer[] allRenderers = transform.GetComponentsInChildren<MeshRenderer>();
@@ -34,12 +40,12 @@ public class TerroristAttributes : MonoBehaviour
         if (!isShow) 
         {
             HideRenderers(allRenderers);
-            firstEnemy.isFire = false; 
+            // firstEnemy.isFire = false; 
         }
         else
         {
             ShowRenderers(allRenderers);
-            firstEnemy.isFire = true; 
+            // firstEnemy.isFire = true; 
             isShow = false; 
         }
     }
