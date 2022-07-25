@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: 2bf2b93aacb663043b319d221285740b
+  - enabled: 1
     path: Assets/Scenes/LevelDraft.unity
     guid: 2528c665a8ee7444fb3dcb9272b7c3b1
+  - enabled: 1
+    path: Assets/Scenes/Level2Draft.unity
+    guid: bc22884580c62c94585d3799d273ccb0
+  - enabled: 1
+    path: Assets/Scenes/Level3Draft.unity
+    guid: 3d03a3d12e5c4154f9387fdac17b9511
+  - enabled: 1
+    path: Assets/Scenes/Level4Draft.unity
+    guid: ec60a39f0b9a2524c99757fa17a5ecda
   m_configObjects: {}
