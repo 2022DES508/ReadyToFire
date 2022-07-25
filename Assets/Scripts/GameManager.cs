@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public bool isDraw;
 
     public PoliceAttributes currentPA;
-    public GameObject currentLine; 
+    public GameObject currentLine;
 
     private void OnEnable()
     {

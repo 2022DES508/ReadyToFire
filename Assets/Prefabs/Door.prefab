@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1285161991716147937}
   - component: {fileID: 1285161991716147936}
   m_Layer: 0
-  m_Name: RedDoor
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 1285161991716147939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 26.55, y: 2.91, z: -10.12}
-  m_LocalScale: {x: 0.35246, y: 4.3468423, z: 5.64195}
+  m_LocalScale: {x: 0.35245997, y: 4.3468423, z: 5.64195}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &1285161991716147966
 MeshFilter:
   m_ObjectHideFlags: 0

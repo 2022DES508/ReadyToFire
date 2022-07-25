@@ -30,6 +30,8 @@ public class LineDrawer : MonoBehaviour
     GameObject obj = null; 
     void BeginDraw()
     {
+        Time.timeScale = 0f; 
+
         GetDrawPoint();
 
         obj = Instantiate(pencil, drawPoint, transform.rotation);
@@ -66,6 +68,8 @@ public class LineDrawer : MonoBehaviour
             }
         }
         Destroy(obj);
+
+        Time.timeScale = 1f; 
     }
 
     void GetDrawPoint()
