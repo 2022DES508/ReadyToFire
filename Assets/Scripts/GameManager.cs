@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public PoliceAttributes currentPA;
     public GameObject currentLine;
 
+    public int enemyCounter; 
+
     private void OnEnable()
     {
         if (GameManager.GM == null)
@@ -23,6 +25,21 @@ public class GameManager : MonoBehaviour
         {
             currentPA.endMove = false;
             Destroy(currentLine); 
+        }
+
+        CalculateEnemyAmount(); 
+    }
+
+    void CalculateEnemyAmount() 
+    {
+        TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>(); 
+        if (enemies != null)
+        {
+            enemyCounter = enemies.Length; 
+        }
+        else
+        {
+            enemyCounter = 0; 
         }
     }
 
