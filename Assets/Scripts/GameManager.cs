@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class GameManager : MonoBehaviour
     public PoliceAttributes currentPA;
     public GameObject currentLine;
 
-    public int enemyCounter; 
+    public int enemyCounter;
+
+    public GameObject GameOver;
+    public GameObject GameWin; 
 
     private void OnEnable()
     {
         if (GameManager.GM == null)
-            GameManager.GM = this; 
+            GameManager.GM = this;
     }
 
     private void Update()
@@ -27,7 +31,8 @@ public class GameManager : MonoBehaviour
             Destroy(currentLine); 
         }
 
-        CalculateEnemyAmount(); 
+        CalculateEnemyAmount();
+        JudgeEnd(); 
     }
 
     void CalculateEnemyAmount() 
@@ -43,4 +48,56 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void JudgeEnd()
+    {
+        if (enemyCounter <= 0)
+        {
+            GameWin.SetActive(true);
+            Time.timeScale = 0f; 
+        }
+
+        if (CalculatePoliceAmount() <= 0)
+        {
+            GameOver.SetActive(true);
+            Time.timeScale = 0f; 
+        }
+    }
+
+    int CalculatePoliceAmount()
+    {
+        PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
+        if (enemies != null)
+        {
+            return enemies.Length;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public void OnClickMenu()
+    {
+        SceneManager.LoadScene("StartMenu"); 
+    }
+
+    public void OnClickLevel1()
+    {
+        SceneManager.LoadScene("LevelDraft"); 
+    }
+
+    public void OnClickLevel2()
+    {
+        SceneManager.LoadScene("Level2Draft");
+    }
+
+    public void OnClickLevel3()
+    {
+        SceneManager.LoadScene("Level3Draft");
+    }
+
+    public void OnClickQuit()
+    {
+        Application.Quit(); 
+    }
 }

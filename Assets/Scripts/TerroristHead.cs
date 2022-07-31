@@ -15,12 +15,17 @@ public class TerroristHead : MonoBehaviour
     {
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
-        transform.LookAt(firstEnemy.gameObject.transform);
+        if (firstEnemy != null)
+        {
+            transform.LookAt(firstEnemy.gameObject.transform);
+        }
         DetectEnemy(); 
     }
 
     PoliceAttributes FindFirstEnemy(PoliceAttributes[] enemies, Transform policePos)
     {
+        if (enemies == null || enemies.Length == 0) return null; 
+
         float minDistance = Vector3.Distance(enemies[0].transform.position, policePos.position);
         PoliceAttributes finalEnemy = enemies[0];
 

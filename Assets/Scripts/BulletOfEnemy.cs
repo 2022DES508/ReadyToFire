@@ -21,6 +21,9 @@ public class BulletOfEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Police")
-            Destroy(gameObject); 
+        {
+            other.GetComponent<PoliceAttributes>().healthyNow -= 1; 
+            Destroy(gameObject);
+        }
     }
 }

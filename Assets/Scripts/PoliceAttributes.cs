@@ -31,7 +31,20 @@ public class PoliceAttributes : MonoBehaviour
     public bool isFire;
 
     [HideInInspector]
-    public bool isControl; 
+    public bool isControl;
+
+    private void Start()
+    {
+        healthyNow = healthyMax; 
+    }
+
+    private void Update()
+    {
+        if (healthyNow <= 0)
+        {
+            Destroy(gameObject); 
+        }
+    }
 
     private void OnMouseEnter()
     {

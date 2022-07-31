@@ -48,14 +48,19 @@ public class BasicGunOfEnemy : MonoBehaviour
     void Aiming()
     {
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
-        PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);  
-        direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z) 
-            - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+        PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
+        if (firstEnemy != null)
+        {
+            direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z)
+                - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
+        }
         // Debug.Log("Aiming direction: " + direction); 
     }
 
     PoliceAttributes FindFirstEnemy(PoliceAttributes[] enemies, Transform policePos)
     {
+        if (enemies == null || enemies.Length == 0) return null; 
+
         float minDistance = Vector3.Distance(enemies[0].transform.position, policePos.position);
         PoliceAttributes finalEnemy = enemies[0];
 
