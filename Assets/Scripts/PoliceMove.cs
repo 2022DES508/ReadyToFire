@@ -9,7 +9,9 @@ public class PoliceMove : MonoBehaviour
     private float timer;
     private PoliceAttributes PA;
 
-    private bool isStop; 
+    public bool isStop;
+
+    public GameObject policeUI; 
 
     private void Start()
     {
@@ -20,7 +22,8 @@ public class PoliceMove : MonoBehaviour
 
     void Update()
     {
-        Movement(); 
+        Movement();
+        ShowPoliceUI(); 
     }
 
     void Movement()
@@ -79,10 +82,19 @@ public class PoliceMove : MonoBehaviour
     {
         isStop = true;
         PA.endMove = true;
+    }
 
-        if (other.tag == "BlueDoor")
+    void ShowPoliceUI()
+    {
+        if (GameManager.GM.isShowPoliceUI) 
         {
-
+            policeUI.SetActive(true);
+            Time.timeScale = 0f; 
+        }
+        else
+        {
+            policeUI.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 

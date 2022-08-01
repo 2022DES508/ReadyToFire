@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Police
-  - BuleDoor
+  - Floor
   layers:
   - Default
   - TransparentFX

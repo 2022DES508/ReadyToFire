@@ -31,6 +31,10 @@ public class VisualFieldDetection : MonoBehaviour
     void CreateRays()
     {
         if (rays != null && rays.Count != 0) rays.Clear(); 
+        if (rays == null)
+        {
+            rays = new List<Ray>(); 
+        }
 
         origin = transform.position;
         // Debug.Log(Forward.transform.position + "+" + origin);

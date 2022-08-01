@@ -15,12 +15,18 @@ public class GameManager : MonoBehaviour
     public int enemyCounter;
 
     public GameObject GameOver;
-    public GameObject GameWin; 
+    public GameObject GameWin;
 
+    public bool isShowPoliceUI; 
     private void OnEnable()
     {
         if (GameManager.GM == null)
             GameManager.GM = this;
+    }
+
+    private void Start()
+    {
+        isShowPoliceUI = false; 
     }
 
     private void Update()
@@ -32,7 +38,8 @@ public class GameManager : MonoBehaviour
         }
 
         CalculateEnemyAmount();
-        JudgeEnd(); 
+        JudgeEnd();
+        CheckIsShowPoliceUI(); 
     }
 
     void CalculateEnemyAmount() 
@@ -99,5 +106,20 @@ public class GameManager : MonoBehaviour
     public void OnClickQuit()
     {
         Application.Quit(); 
+    }
+
+    void CheckIsShowPoliceUI()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            if (isShowPoliceUI == false)
+            {
+                isShowPoliceUI = true; 
+            }
+            else
+            {
+                isShowPoliceUI = false; 
+            }
+        }
     }
 }
