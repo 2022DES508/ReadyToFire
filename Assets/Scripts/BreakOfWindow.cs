@@ -11,6 +11,11 @@ public class BreakOfWindow : MonoBehaviour
         ChangePosition(); 
     }
 
+    private void Update()
+    {
+        ChangePosition();
+    }
+
     void ChangePosition()
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(upTransform.position); 

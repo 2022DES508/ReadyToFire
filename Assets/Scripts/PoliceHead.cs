@@ -47,9 +47,12 @@ public class PoliceHead : MonoBehaviour
         return finalEnemy;
     }
 
-    bool DetectEnemy()
+    void DetectEnemy()
     {
-        GetComponentInParent<PoliceAttributes>().isFire = false; 
+        GetComponentInParent<PoliceAttributes>().isFire = false;
+
+        GameObject minEnemy = null;  
+        float minDistance = float.MaxValue;  
 
         foreach (var ray in vfd.rays)
         {
@@ -57,15 +60,22 @@ public class PoliceHead : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<TerroristAttributes>())
                 {
-                    GetComponentInParent<PoliceAttributes>().isFire = true; 
-                    hit.collider.gameObject.GetComponent<TerroristAttributes>().isShow = true;
-
-                    transform.LookAt(hit.collider.gameObject.transform);
-                    return true; 
+                    float thisDistance = Vector3.Distance(hit.collider.gameObject.transform.position, this.transform.position); 
+                    if (thisDistance < minDistance)
+                    {
+                        minEnemy = hit.collider.gameObject;
+                        minDistance = thisDistance; 
+                    }
                 }
             }
         }
-        return false;  
+        if (minEnemy != null)
+        {
+            GetComponentInParent<PoliceAttributes>().isFire = true;
+            minEnemy.GetComponent<TerroristAttributes>().isShow = true;
+
+            transform.LookAt(minEnemy.transform); 
+        }
     }
 
     void SelfRotate()

@@ -87,18 +87,26 @@ public class BasicGun : MonoBehaviour
 
     TerroristAttributes FindAimingEnemy()
     {
+        TerroristAttributes minEnemy = null;
+        float minDistance = float.MaxValue;
+
         foreach (var ray in vfd.rays)
         {
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
                 if (hit.collider.gameObject.GetComponent<TerroristAttributes>())
                 {
-                    return hit.collider.gameObject.GetComponent<TerroristAttributes>(); 
+                    float thisDistance = Vector3.Distance(hit.collider.gameObject.transform.position, transform.parent.transform.position); 
+                    if (thisDistance < minDistance)
+                    {
+                        minEnemy = hit.collider.GetComponent<TerroristAttributes>(); 
+                        minDistance = thisDistance;
+                    }
                 }
             }
         }
 
-        return null; 
+        return minEnemy; 
     }
 
     void Fire()
