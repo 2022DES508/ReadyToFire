@@ -17,13 +17,11 @@ public class PoliceHead : MonoBehaviour
     {
         SelfRotate(); 
 
-        TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
-        TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
-        if (firstEnemy)
-        {
-            if (DetectEnemy())
-                transform.LookAt(firstEnemy.gameObject.transform);
-        }
+        // TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
+        // TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
+
+        DetectEnemy(); 
+
         if (GetComponentInParent<PoliceAttributes>().isFire)
             lr.enabled = false;
         else
@@ -52,7 +50,7 @@ public class PoliceHead : MonoBehaviour
     bool DetectEnemy()
     {
         GetComponentInParent<PoliceAttributes>().isFire = false; 
-        bool isture = false; 
+
         foreach (var ray in vfd.rays)
         {
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
@@ -61,11 +59,13 @@ public class PoliceHead : MonoBehaviour
                 {
                     GetComponentInParent<PoliceAttributes>().isFire = true; 
                     hit.collider.gameObject.GetComponent<TerroristAttributes>().isShow = true;
-                    isture = true; 
+
+                    transform.LookAt(hit.collider.gameObject.transform);
+                    return true; 
                 }
             }
         }
-        return isture; 
+        return false;  
     }
 
     void SelfRotate()

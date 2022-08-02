@@ -13,12 +13,15 @@ public class TerroristHead : MonoBehaviour
 
     private void Update()
     {
+        /*
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
         if (firstEnemy != null)
         {
             transform.LookAt(firstEnemy.gameObject.transform);
         }
+        */
+
         DetectEnemy(); 
     }
 
@@ -51,7 +54,9 @@ public class TerroristHead : MonoBehaviour
             {
                 if (hit.collider.gameObject.GetComponent<PoliceAttributes>())
                 {
-                    GetComponentInParent<TerroristAttributes>().isFire = true; 
+                    GetComponentInParent<TerroristAttributes>().isFire = true;
+
+                    transform.LookAt(hit.collider.gameObject.transform); 
                 }
             }
         }

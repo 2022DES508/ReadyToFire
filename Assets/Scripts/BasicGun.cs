@@ -16,10 +16,14 @@ public class BasicGun : MonoBehaviour
 
     private float timer;
 
+    private VisualFieldDetection vfd; 
+
     private void Start()
     {
         muzzlePos = transform.Find("Muzzle");
         // shellPos = transform.Find("BulletShell"); 
+
+        vfd = GetComponentInParent<VisualFieldDetection>(); 
     }
     private void Update()
     {
@@ -47,8 +51,9 @@ public class BasicGun : MonoBehaviour
 
     void Aiming()
     {
-        TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
-        TerroristAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
+        // TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>();
+
+        TerroristAttributes firstEnemy = FindAimingEnemy();
         if (firstEnemy)
         {
             direction = (new Vector3(firstEnemy.transform.position.x, firstEnemy.transform.position.y, firstEnemy.transform.position.z)
@@ -78,6 +83,22 @@ public class BasicGun : MonoBehaviour
         }
 
         return finalEnemy; 
+    }
+
+    TerroristAttributes FindAimingEnemy()
+    {
+        foreach (var ray in vfd.rays)
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            {
+                if (hit.collider.gameObject.GetComponent<TerroristAttributes>())
+                {
+                    return hit.collider.gameObject.GetComponent<TerroristAttributes>(); 
+                }
+            }
+        }
+
+        return null; 
     }
 
     void Fire()

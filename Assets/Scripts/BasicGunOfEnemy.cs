@@ -16,10 +16,14 @@ public class BasicGunOfEnemy : MonoBehaviour
 
     private float timer;
 
+    private VisualFieldDetection vfd; 
+
     private void Start()
     {
         muzzlePos = transform.Find("Muzzle");
         // shellPos = transform.Find("BulletShell"); 
+
+        vfd = GetComponentInParent<VisualFieldDetection>(); 
     }
     private void Update()
     {
@@ -47,7 +51,9 @@ public class BasicGunOfEnemy : MonoBehaviour
 
     void Aiming()
     {
-        PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
+        // PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
+
+        PoliceAttributes[] enemies = FindEnemyInEyes();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
         if (firstEnemy != null)
         {
@@ -55,6 +61,22 @@ public class BasicGunOfEnemy : MonoBehaviour
                 - new Vector3(transform.position.x, transform.position.y, transform.position.z)).normalized;
         }
         // Debug.Log("Aiming direction: " + direction); 
+    }
+
+    PoliceAttributes[]  FindEnemyInEyes()
+    {
+        List<PoliceAttributes> polices = new List<PoliceAttributes>();  
+        foreach (var ray in vfd.rays)
+        {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            {
+                if (hit.collider.gameObject.GetComponent<PoliceAttributes>())
+                {
+                    polices.Add(hit.collider.gameObject.GetComponent<PoliceAttributes>());
+                }
+            }
+        }
+        return polices.ToArray();  
     }
 
     PoliceAttributes FindFirstEnemy(PoliceAttributes[] enemies, Transform policePos)
