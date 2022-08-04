@@ -31,6 +31,7 @@ public class PushOfDoor : MonoBehaviour
     {
         this.transform.parent.transform.parent.transform.parent.transform.Rotate(transform.up, 90f, Space.Self);
         pushBtn.SetActive(false);
-        breakBtn.SetActive(false); 
+        breakBtn.SetActive(false);
+        SoundManager.SM.PlayDoorOpen(); 
     }
 }

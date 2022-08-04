@@ -114,6 +114,8 @@ public class BasicGun : MonoBehaviour
         if (!transform.parent.gameObject.transform.parent.GetComponentInParent<PoliceAttributes>().isFire) return;  
 
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().SetSpeed(direction); 
+        bullet.GetComponent<Bullet>().SetSpeed(direction);
+
+        SoundManager.SM.PlayGunShot(); 
     }
 }
