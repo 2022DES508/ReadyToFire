@@ -12,4 +12,12 @@ public class Window : MonoBehaviour
             BreakBtn.SetActive(true); 
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<PoliceAttributes>() != null)
+        {
+            BreakBtn.SetActive(true); 
+        }
+    }
 }

@@ -15,4 +15,13 @@ public class Door : MonoBehaviour
             PushBtn.SetActive(true); 
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<PoliceAttributes>() != null)
+        {
+            BreakBtn.SetActive(true); 
+            PushBtn.SetActive(true);
+        }
+    }
 }

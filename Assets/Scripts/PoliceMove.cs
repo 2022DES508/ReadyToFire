@@ -67,12 +67,16 @@ public class PoliceMove : MonoBehaviour
                     (float)(PA.path[posIndex].y + 0.75f), PA.path[posIndex].z);
 
                 // this.gameObject.transform.position = targetPos;
-                if (Vector3.Distance(targetPos, lastPos) >= 10f)
+                /*
+                if (Vector3.Distance(targetPos, lastPos) >= 5f)
                 {
                     rb.velocity = new Vector3((targetPos.x - lastPos.x) * fixValue, (targetPos.y - lastPos.y) * fixValue, (targetPos.z - lastPos.z) * fixValue); 
                     lastPos = targetPos; 
                     Debug.Log(rb.velocity);
                 }
+                */
+
+                rb.velocity = new Vector3((targetPos.x - transform.position.x) * fixValue, (targetPos.y - transform.position.y) * fixValue, (targetPos.z - transform.position.z) * fixValue);
 
                 /*
                 if (posIndex == PA.path.ToArray().Length - 1)
