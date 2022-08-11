@@ -11,13 +11,20 @@ public class PoliceMove : MonoBehaviour
 
     public bool isStop;
 
-    public GameObject policeUI; 
+    public GameObject policeUI;
+
+    public Rigidbody rb;
+    [SerializeField] 
+    private float fixValue;
+
+    private Vector3 lastPos; 
 
     private void Start()
     {
         posIndex = 0;
         timer = 0;
-        PA = GetComponent<PoliceAttributes>(); 
+        PA = GetComponent<PoliceAttributes>();
+        rb = GetComponent<Rigidbody>(); 
     }
 
     void Update()
@@ -39,6 +46,7 @@ public class PoliceMove : MonoBehaviour
         {
             PA.startMove = false;
             posIndex = 1;
+            lastPos = transform.position; 
         }
 
         if (timer > 1 / PA.moveSpeed)
@@ -58,7 +66,14 @@ public class PoliceMove : MonoBehaviour
                 Vector3 targetPos = new Vector3(PA.path[posIndex].x,
                     (float)(PA.path[posIndex].y + 0.75f), PA.path[posIndex].z);
 
-                this.gameObject.transform.position = targetPos;
+                // this.gameObject.transform.position = targetPos;
+                if (Vector3.Distance(targetPos, lastPos) >= 10f)
+                {
+                    rb.velocity = new Vector3((targetPos.x - lastPos.x) * fixValue, (targetPos.y - lastPos.y) * fixValue, (targetPos.z - lastPos.z) * fixValue); 
+                    lastPos = targetPos; 
+                    Debug.Log(rb.velocity);
+                }
+
                 /*
                 if (posIndex == PA.path.ToArray().Length - 1)
                     this.gameObject.transform.LookAt(targetPos); 
