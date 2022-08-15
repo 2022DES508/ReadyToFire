@@ -17,7 +17,9 @@ public class Grenade : MonoBehaviour
 
     private ParticleSystem FXps;
 
-    private MeshRenderer mr; 
+    private MeshRenderer mr;
+
+    public GameObject bombObj; 
 
     private void OnEnable()
     {
@@ -42,7 +44,8 @@ public class Grenade : MonoBehaviour
             rb.isKinematic = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
-            mr.enabled = false; 
+            mr.enabled = false;
+            bombObj.SetActive(false); 
             FXps.Play(); 
 
             DamageEnemies(damageRadius);  
