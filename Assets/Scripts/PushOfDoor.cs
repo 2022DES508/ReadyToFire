@@ -9,7 +9,9 @@ public class PushOfDoor : MonoBehaviour
     private float posFixValue;
 
     public GameObject pushBtn;
-    public GameObject breakBtn; 
+    public GameObject breakBtn;
+
+    public GameObject rotateControl; 
 
     private void OnEnable()
     {
@@ -29,7 +31,9 @@ public class PushOfDoor : MonoBehaviour
 
     public void OnClickPushBtn()
     {
-        this.transform.parent.transform.parent.transform.parent.transform.Rotate(transform.up, 90f, Space.Self);
+        // this.transform.parent.transform.parent.transform.parent.transform.Rotate(transform.up, 90f, Space.Self);
+
+        rotateControl.transform.Rotate(transform.up, 90f, Space.Self); 
         pushBtn.SetActive(false);
         breakBtn.SetActive(false);
         SoundManager.SM.PlayDoorOpen(); 

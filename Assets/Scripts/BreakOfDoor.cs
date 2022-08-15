@@ -6,7 +6,12 @@ public class BreakOfDoor : MonoBehaviour
 {
     public Transform upTransform;
     [SerializeField]
-    private float posFixValue; 
+    private float posFixValue;
+
+    public GameObject thisDoor;
+
+    public GameObject pushBtn;
+    public GameObject breakBtn;
 
     private void OnEnable()
     {
@@ -26,6 +31,13 @@ public class BreakOfDoor : MonoBehaviour
 
     public void OnClickBreakBtn()
     {
-        Destroy(transform.parent.transform.parent.transform.parent.gameObject); 
+        // Destroy(transform.parent.transform.parent.transform.parent.gameObject); 
+
+        pushBtn.SetActive(false);
+        breakBtn.SetActive(false);
+
+        transform.parent.transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = false;
+        // Debug.Log(transform.parent.transform.parent.transform.parent.GetComponent<BoxCollider>().enabled); 
+        Destroy(thisDoor); 
     }
 }

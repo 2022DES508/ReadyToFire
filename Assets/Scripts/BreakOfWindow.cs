@@ -5,6 +5,9 @@ using UnityEngine;
 public class BreakOfWindow : MonoBehaviour
 {
     public Transform upTransform;
+    public GameObject thisWindow;
+
+    public GameObject breakBtn;
 
     private void OnEnable()
     {
@@ -24,6 +27,11 @@ public class BreakOfWindow : MonoBehaviour
 
     public void OnClickBreakBtn()
     {
-        Destroy(transform.parent.transform.parent.gameObject); 
+        // Destroy(transform.parent.transform.parent.gameObject); 
+
+        breakBtn.SetActive(false);
+
+        transform.parent.transform.parent.GetComponent<BoxCollider>().enabled = false;
+        Destroy(thisWindow); 
     }
 }
