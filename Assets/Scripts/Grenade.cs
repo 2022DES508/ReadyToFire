@@ -13,17 +13,25 @@ public class Grenade : MonoBehaviour
 
     private Vector3 bombPos;
     [SerializeField] 
-    private float damageRadius; 
+    private float damageRadius;
+
+    private ParticleSystem FXps;
+
+    private MeshRenderer mr; 
 
     private void OnEnable()
     {
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
+
+        mr = GetComponent<MeshRenderer>(); 
+        FXps = GetComponentInChildren<ParticleSystem>(); 
     }
 
     private void Start()
     {
         // SetDirection(transform.up * 10); 
-        rb.velocity = beginDirection; 
+        rb.velocity = beginDirection;
+        FXps.Pause();  
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,6 +41,9 @@ public class Grenade : MonoBehaviour
             bombPos = transform.position;
             rb.isKinematic = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            mr.enabled = false; 
+            FXps.Play(); 
 
             DamageEnemies(damageRadius);  
             StartCoroutine(coroutine_BombAnimation()); 

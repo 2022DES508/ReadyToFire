@@ -13,15 +13,22 @@ public class Smoke : MonoBehaviour
 
     private Vector3 smokePos;
 
+    private MeshRenderer mr;
+    private ParticleSystem FXps; 
+
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
+
+        mr = GetComponent<MeshRenderer>();
+        FXps = GetComponentInChildren<ParticleSystem>(); 
     }
 
     private void Start()
     {
         // SetDirection(transform.forward * 10); 
         rb.velocity = beginDirection;
+        FXps.Pause(); 
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,6 +38,9 @@ public class Smoke : MonoBehaviour
             smokePos = transform.position;
             rb.isKinematic = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            mr.enabled = false;
+            FXps.Play(); 
 
             StartCoroutine(coroutine_BombAnimation());
         }
