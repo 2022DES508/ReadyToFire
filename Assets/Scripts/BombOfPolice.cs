@@ -32,6 +32,9 @@ public class BombOfPolice : MonoBehaviour
     {
         Vector3 throwDirection = forwardTransform.position - upTransform.position;
         GameObject newBomb =  Instantiate(BombPrefab, upTransform.position, upTransform.rotation);
+
+        // Debug.Log(throwDirection); 
+
         newBomb.GetComponent<Grenade>().SetDirection(throwDirection);
 
         GameManager.GM.isShowPoliceUI = false; 

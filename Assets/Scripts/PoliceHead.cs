@@ -52,10 +52,15 @@ public class PoliceHead : MonoBehaviour
         GetComponentInParent<PoliceAttributes>().isFire = false;
 
         GameObject minEnemy = null;  
-        float minDistance = float.MaxValue;  
+        float minDistance = float.MaxValue;
+
+        // Debug.Log(vfd.rays[0]);
+        // Debug.DrawRay(vfd.rays[0].origin, vfd.rays[0].direction, Color.black); 
 
         foreach (var ray in vfd.rays)
         {
+            // Debug.DrawLine(ray.origin, ray.direction, Color.green);  
+            
             if (Physics.Raycast(ray, out RaycastHit hit, 100f))
             {
                 if (hit.collider.gameObject.GetComponent<TerroristAttributes>())
@@ -69,8 +74,12 @@ public class PoliceHead : MonoBehaviour
                 }
             }
         }
+
+        // Debug.Log(minEnemy); 
+
         if (minEnemy != null)
         {
+            // Debug.Log("Yes!");
             GetComponentInParent<PoliceAttributes>().isFire = true;
             minEnemy.GetComponent<TerroristAttributes>().isShow = true;
 

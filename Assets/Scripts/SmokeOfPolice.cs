@@ -32,6 +32,9 @@ public class SmokeOfPolice : MonoBehaviour
     {
         Vector3 throwDirection = forwardTransform.position - upTransform.position;
         GameObject newSmoke = Instantiate(SmokePrefab, upTransform.position, upTransform.rotation);
+
+        // Debug.Log(throwDirection); 
+
         newSmoke.GetComponent<Smoke>().SetDirection(throwDirection); 
 
         GameManager.GM.isShowPoliceUI = false;

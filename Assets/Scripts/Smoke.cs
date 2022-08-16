@@ -14,7 +14,9 @@ public class Smoke : MonoBehaviour
     private Vector3 smokePos;
 
     private MeshRenderer mr;
-    private ParticleSystem FXps; 
+    private ParticleSystem FXps;
+
+    public GameObject smokeObj; 
 
     private void OnEnable()
     {
@@ -28,6 +30,9 @@ public class Smoke : MonoBehaviour
     {
         // SetDirection(transform.forward * 10); 
         rb.velocity = beginDirection;
+
+        // Debug.Log(rb.velocity); 
+
         FXps.Pause(); 
     }
 
@@ -40,6 +45,7 @@ public class Smoke : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
             mr.enabled = false;
+            smokeObj.SetActive(false); 
             FXps.Play(); 
 
             StartCoroutine(coroutine_BombAnimation());
@@ -69,7 +75,7 @@ public class Smoke : MonoBehaviour
 
     public void SetDirection(Vector3 curForward)
     {
-        float fixValue = 2;
+        float fixValue = 1;
         beginDirection = new Vector3(curForward.x * fixValue, throwForce, curForward.z * fixValue);
     }
 }

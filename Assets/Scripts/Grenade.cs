@@ -33,6 +33,9 @@ public class Grenade : MonoBehaviour
     {
         // SetDirection(transform.up * 10); 
         rb.velocity = beginDirection;
+
+        // Debug.Log(rb.velocity); 
+
         FXps.Pause();  
     }
 
@@ -93,7 +96,7 @@ public class Grenade : MonoBehaviour
 
     public void SetDirection(Vector3 curForward)
     {
-        float fixValue = 2; 
+        float fixValue = 1; 
         beginDirection = new Vector3(curForward.x * fixValue, throwForce, curForward.z * fixValue);  
     }
 }
