@@ -44,10 +44,11 @@ public class GameManager : MonoBehaviour
 
     void CalculateEnemyAmount() 
     {
-        TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>(); 
+        TerroristAttributes[] enemies = FindObjectsOfType<TerroristAttributes>(true);  
         if (enemies != null)
         {
-            enemyCounter = enemies.Length; 
+            enemyCounter = enemies.Length;
+            // Debug.Log(enemies.Length); 
         }
         else
         {

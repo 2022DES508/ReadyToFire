@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwForce: 10
   damageRadius: 10
+  damageValue: 50
   bombObj: {fileID: 4377364417555333274}
 --- !u!54 &1492065131949115899
 Rigidbody:

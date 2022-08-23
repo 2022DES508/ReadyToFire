@@ -36,33 +36,42 @@ public class TerroristAttributes : MonoBehaviour
         PoliceAttributes[] enemies = FindObjectsOfType<PoliceAttributes>();
         PoliceAttributes firstEnemy = FindFirstEnemy(enemies, this.transform);
         MeshRenderer[] allRenderers = transform.GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] allSkinRenderers = transform.GetComponentsInChildren<SkinnedMeshRenderer>(); 
         // if (Vector3.Distance(firstEnemy.transform.position, transform.position) > 10)
         if (!isShow) 
         {
-            HideRenderers(allRenderers);
+            HideRenderers(allRenderers, allSkinRenderers);
             // firstEnemy.isFire = false; 
         }
         else
         {
-            ShowRenderers(allRenderers);
+            ShowRenderers(allRenderers, allSkinRenderers); 
             // firstEnemy.isFire = true; 
             isShow = false; 
         }
     }
 
-    void HideRenderers(MeshRenderer[] allRenderers) 
+    void HideRenderers(MeshRenderer[] allRenderers, SkinnedMeshRenderer[] allSkinRenderers) 
     {
         for (int i = 0; i < allRenderers.Length; i++)
         {
             allRenderers[i].enabled = false; 
         }
+        for (int i = 0; i < allSkinRenderers.Length; i++)
+        {
+            allSkinRenderers[i].enabled = false;
+        }
     }
 
-    void ShowRenderers(MeshRenderer[] allRenderers)
+    void ShowRenderers(MeshRenderer[] allRenderers, SkinnedMeshRenderer[] allSkinRenderers)
     {
         for (int i = 0; i < allRenderers.Length; i++)
         {
             allRenderers[i].enabled = true; 
+        }
+        for (int i = 0; i < allSkinRenderers.Length; i++)
+        {
+            allSkinRenderers[i].enabled = true; 
         }
     }
 

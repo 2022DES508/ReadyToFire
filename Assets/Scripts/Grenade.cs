@@ -14,6 +14,8 @@ public class Grenade : MonoBehaviour
     private Vector3 bombPos;
     [SerializeField] 
     private float damageRadius;
+    [SerializeField]
+    private float damageValue; 
 
     private ParticleSystem FXps;
 
@@ -67,7 +69,7 @@ public class Grenade : MonoBehaviour
                 distanceToEnemy = (enemies[i].gameObject.transform.position - bombPos).magnitude; 
                 if (distanceToEnemy <= radius)
                 {
-                    enemies[i].healthyNow -= 5; 
+                    enemies[i].healthyNow -= damageValue;  
                 }
             }
         }

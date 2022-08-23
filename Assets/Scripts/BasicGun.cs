@@ -16,7 +16,10 @@ public class BasicGun : MonoBehaviour
 
     private float timer;
 
-    private VisualFieldDetection vfd; 
+    private VisualFieldDetection vfd;
+
+    [SerializeField]
+    private ParticleSystem bulletTail; 
 
     private void Start()
     {
@@ -115,6 +118,7 @@ public class BasicGun : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().SetSpeed(direction);
+        bulletTail.Play(); 
 
         // SoundManager.SM.PlayGunShot(); 
         SoundManager.SM.PlayRandomGunShot(); 
