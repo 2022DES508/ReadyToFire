@@ -3979,9 +3979,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 477545167}
-  doorOpen: {fileID: 8300000, guid: 03ebd2a404bfd9d4e9b3d10a81e390b2, type: 3}
+  doorOpen: {fileID: 8300000, guid: dc217511aebf67f4a995cc981c062168, type: 3}
   gunShot: {fileID: 8300000, guid: dec6256f443b4fd41af3c266d3555205, type: 3}
-  footstep: {fileID: 0}
+  footstep: {fileID: 8300000, guid: ea128aad1044dc54da9c54f595aed70e, type: 3}
+  randomGunShot1: {fileID: 8300000, guid: 2b4f2ebd25aec044aac6bd33ab169743, type: 3}
+  randomGunShot2: {fileID: 8300000, guid: 14fbfb264a80b4946b286cfc228408e5, type: 3}
+  randomGunShot3: {fileID: 8300000, guid: 51b4f61597d17dd489a24dc63b17494f, type: 3}
 --- !u!4 &477545169
 Transform:
   m_ObjectHideFlags: 0

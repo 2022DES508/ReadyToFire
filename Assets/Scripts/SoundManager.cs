@@ -12,6 +12,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private AudioClip doorOpen, gunShot, footstep;
 
+    [SerializeField]
+    private AudioClip randomGunShot1, randomGunShot2, randomGunShot3; 
+
     private bool isStop; 
 
     private void OnEnable()
@@ -30,6 +33,32 @@ public class SoundManager : MonoBehaviour
 
         audioSource.clip = doorOpen;
         audioSource.Play(); 
+    }
+
+    public void PlayRandomGunShot()
+    {
+        if (isStop) return;
+
+        int randNum = Random.Range(1, 4);
+
+        switch (randNum)
+        {
+            case 1: 
+                audioSource.clip = randomGunShot1;
+                break;
+            case 2:
+                audioSource.clip = randomGunShot2;
+                break;
+            case 3:
+                audioSource.clip = randomGunShot3;
+                break;
+            default:
+                break;
+        }
+        if (audioSource)
+        {
+            audioSource.Play(); 
+        }
     }
 
     public void PlayGunShot()

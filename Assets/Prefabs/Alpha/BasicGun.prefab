@@ -170,5 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6fa14c1c8ad5046b3be6165098034a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  interval: 0.2
   bulletPrefab: {fileID: 3010179591576801537, guid: 43004223cd4480a4e871a5514fd86353, type: 3}

@@ -116,6 +116,7 @@ public class BasicGun : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, muzzlePos.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().SetSpeed(direction);
 
-        SoundManager.SM.PlayGunShot(); 
+        // SoundManager.SM.PlayGunShot(); 
+        SoundManager.SM.PlayRandomGunShot(); 
     }
 }
