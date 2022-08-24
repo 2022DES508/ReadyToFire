@@ -37,6 +37,8 @@ public class PoliceMove : MonoBehaviour
     {
         if (isStop)
         {
+            SoundManager.SM.CloseFoot(); 
+
             PA.path.Clear();
             isStop = false;
             return; 
@@ -44,6 +46,8 @@ public class PoliceMove : MonoBehaviour
 
         if (PA.startMove)
         {
+            SoundManager.SM.PlayFoot(); 
+
             PA.startMove = false;
             posIndex = 1;
             lastPos = transform.position; 
@@ -78,16 +82,24 @@ public class PoliceMove : MonoBehaviour
 
                 rb.velocity = new Vector3((targetPos.x - transform.position.x) * fixValue, (targetPos.y - transform.position.y) * fixValue, (targetPos.z - transform.position.z) * fixValue);
 
+                SoundManager.SM.FootCheck();  
+
                 /*
                 if (posIndex == PA.path.ToArray().Length - 1)
                     this.gameObject.transform.LookAt(targetPos); 
                 */
                 posIndex += 1;
+                if (posIndex >= PA.path.ToArray().Length)
+                {
+                    SoundManager.SM.CloseFoot(); 
+                }
             }
             else
             {
                 posIndex = 0;
                 PA.endMove = true;
+
+                // SoundManager.SM.CloseFoot(); 
             }
         }
         else

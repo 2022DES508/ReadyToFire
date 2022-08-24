@@ -7,13 +7,18 @@ public class SoundManager : MonoBehaviour
     public static SoundManager SM;
 
     [SerializeField]
-    private AudioSource audioSource;
+    private AudioSource audioSource, supAudioSource;
+    [SerializeField] 
+    private AudioSource audioSourceBGM; 
 
     [SerializeField]
     private AudioClip doorOpen, gunShot, footstep;
 
     [SerializeField]
-    private AudioClip randomGunShot1, randomGunShot2, randomGunShot3; 
+    private AudioClip randomGunShot1, randomGunShot2, randomGunShot3;
+
+    [SerializeField]
+    private AudioClip thisBGM; 
 
     private bool isStop; 
 
@@ -27,12 +32,63 @@ public class SoundManager : MonoBehaviour
         isStop = false; 
     }
 
+    private void Start()
+    {
+        PlayBGM(); 
+    }
+
+    public void PlayBGM()
+    {
+        if (isStop) return;
+
+        audioSourceBGM.clip = thisBGM;
+        audioSourceBGM.Play(); 
+    }
+
+    public void CloseBGM()
+    {
+        if (audioSourceBGM.isPlaying)
+        {
+            audioSourceBGM.Stop();
+        }
+        else
+        {
+            PlayBGM(); 
+        }
+    }
+
     public void PlayDoorOpen()
     {
         if (isStop) return;
 
-        audioSource.clip = doorOpen;
-        audioSource.Play(); 
+        supAudioSource.clip = doorOpen;
+        supAudioSource.Play(); 
+    }
+
+    public void PlayFoot()
+    {
+        if (isStop) return;
+
+        supAudioSource.clip = footstep;
+        supAudioSource.Play(); 
+    }
+
+    public void FootCheck()
+    {
+        if (isStop) return; 
+
+        if (!(supAudioSource.isPlaying && supAudioSource.clip == footstep))
+        {
+            PlayFoot(); 
+        }
+    }
+
+    public void CloseFoot()
+    {
+        if (supAudioSource.isPlaying && supAudioSource.clip == footstep)
+        {
+            supAudioSource.Stop(); 
+        }
     }
 
     public void PlayRandomGunShot()
@@ -72,6 +128,8 @@ public class SoundManager : MonoBehaviour
     public void StopAll()
     {
         audioSource.Stop();
+        audioSourceBGM.Stop();
+        supAudioSource.Stop(); 
 
         isStop = true;
     }
