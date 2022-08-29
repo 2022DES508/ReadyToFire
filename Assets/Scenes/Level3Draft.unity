@@ -8837,7 +8837,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13981,6 +13981,7 @@ MonoBehaviour:
   enemyCounter: 0
   GameOver: {fileID: 1427822311}
   GameWin: {fileID: 9464093}
+  GamePause: {fileID: 1184705393}
   isShowPoliceUI: 0
 --- !u!4 &1819354598
 Transform:

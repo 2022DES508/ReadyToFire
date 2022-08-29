@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject GameOver;
     public GameObject GameWin;
+    public GameObject GamePause; 
 
     public bool isShowPoliceUI; 
     private void OnEnable()
@@ -40,6 +41,11 @@ public class GameManager : MonoBehaviour
         CalculateEnemyAmount();
         JudgeEnd();
         CheckIsShowPoliceUI(); 
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            OnClickPause(); 
+        }
     }
 
     void CalculateEnemyAmount() 
@@ -107,6 +113,12 @@ public class GameManager : MonoBehaviour
     public void OnClickQuit()
     {
         Application.Quit(); 
+    }
+
+    public void OnClickPause()
+    {
+        if (!GamePause) return; 
+        GamePause.SetActive(true); 
     }
 
     void CheckIsShowPoliceUI()

@@ -473,6 +473,7 @@ MonoBehaviour:
   enemyCounter: 0
   GameOver: {fileID: 166337992}
   GameWin: {fileID: 245312393}
+  GamePause: {fileID: 918679691}
   isShowPoliceUI: 0
 --- !u!4 &205569283
 Transform:
