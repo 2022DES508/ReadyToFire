@@ -25,7 +25,7 @@ public class VisualFieldDetection : MonoBehaviour
     private void Update()
     {
         CreateRays();
-        DrawRays(); 
+        // DrawRays(); 
     }
 
     void CreateRays()

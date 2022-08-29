@@ -14,6 +14,27 @@ public class Line : MonoBehaviour
     // 直线各点之间的最小距离 
     float pointsMinDistance = 0.1f;
 
+    private float existTimer;
+
+    private void Start()
+    {
+        existTimer = 10; 
+    }
+
+    private void Update()
+    {
+        ExistenceCheck(); 
+    }
+
+    void ExistenceCheck()
+    {
+        existTimer -= Time.deltaTime; 
+        if (existTimer <= 0)
+        {
+            Destroy(transform.gameObject); 
+        }
+    }
+
     // 画点，连线
     public void AddPoint (Vector3 newPoint)
     {
