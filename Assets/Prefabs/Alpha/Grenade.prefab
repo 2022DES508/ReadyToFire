@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd26ad8c7f23a1743bd8ae3b97de14b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 5
   damageRadius: 10
   damageValue: 50
   bombObj: {fileID: 4377364417555333274}

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1129899a21306eb42a7898c50db1136c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 10
+  throwForce: 5
   smokeObj: {fileID: 2459984124654488713}
 --- !u!1001 &2117362995350380847
 PrefabInstance:

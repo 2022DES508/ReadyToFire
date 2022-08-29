@@ -31,7 +31,7 @@ public class BombOfPolice : MonoBehaviour
     public void OnClickBombBtn()
     {
         Vector3 throwDirection = forwardTransform.position - upTransform.position;
-        GameObject newBomb =  Instantiate(BombPrefab, upTransform.position, upTransform.rotation);
+        GameObject newBomb =  Instantiate(BombPrefab, upTransform.position, Quaternion.identity);
 
         // Debug.Log(throwDirection); 
 

@@ -99,6 +99,7 @@ public class Grenade : MonoBehaviour
     public void SetDirection(Vector3 curForward)
     {
         float fixValue = 1; 
-        beginDirection = new Vector3(curForward.x * fixValue, throwForce, curForward.z * fixValue);  
+        beginDirection = new Vector3(curForward.x * fixValue, throwForce, curForward.z * fixValue);
+        Debug.Log(beginDirection); 
     }
 }
