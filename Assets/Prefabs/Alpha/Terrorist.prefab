@@ -422,10 +422,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8645764519086888899, guid: 92400ffd32c6b0a42ad529a64778b6bf, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8645764519086888925, guid: 92400ffd32c6b0a42ad529a64778b6bf, type: 3}
       propertyPath: m_Name
       value: BasicGunOfEnemy
